@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour {
 	// the speed the player turns at
 	public float turnSpeed;
 
+	// the missile gasme object
+	public GameObject missile;
+
+	// the offset to create the missiles
+	public Vector3 missileOffset;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -36,12 +42,26 @@ public class PlayerController : MonoBehaviour {
 
 		// checks for moving the player forwards/backwards
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			transform.Translate (0, - speed * Time.deltaTime, 0);
+			transform.Translate (0, speed * Time.deltaTime, 0);
 
 		} else if (Input.GetKey(KeyCode.DownArrow)) {
 
 			// moves backwards at half speed
-			transform.Translate (0, speed * Time.deltaTime / 2, 0);
+			transform.Translate (0, - speed * Time.deltaTime / 2, 0);
+		}
+
+		// checks for shooting
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			
+			Instantiate(missile, 
+	            transform.TransformPoint(missileOffset), 
+	            transform.rotation);
+			Instantiate(missile, 
+	            transform.TransformPoint(
+				new Vector3(-missileOffset.x, missileOffset.y, missileOffset.z)), 
+	            transform.rotation);
+
+
 		}
 	}
 }
