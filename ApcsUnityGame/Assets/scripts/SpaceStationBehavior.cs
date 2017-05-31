@@ -7,10 +7,16 @@ public class SpaceStationBehavior : MonoBehaviour {
 
 	public GameObject healthText;
 
+    public GameObject gameOverScreen;
+
 	void Update() {
 		if (health <= 0) {
 			health = 0;
-			Debug.Log("You Lose");
+
+            gameOverScreen.SetActive(true);
+
+            GameObject.Destroy(this);
+
 		}
 
 		healthText.GetComponent<GUIText> ().text = "Space Station Health: " + health;
