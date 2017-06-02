@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject enemy;
 	public GameObject station;
+    public GameObject scoreText;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
 				), new Quaternion());
 
 			thisEnemy.GetComponent<EnemyBehavior>().station = station;
+            thisEnemy.GetComponent<EnemyBehavior>().scoreText = scoreText;
 
 			lastSpawnTime = Time.time;
 

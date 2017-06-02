@@ -51,6 +51,7 @@
      <Compile Include="Assets\scripts\MissileBehavior.cs" />
      <Compile Include="Assets\scripts\PlayAgainButtonBehavior.cs" />
      <Compile Include="Assets\scripts\PlayerController.cs" />
+     <Compile Include="Assets\scripts\ScoreController.cs" />
      <Compile Include="Assets\scripts\SpaceStationBehavior.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

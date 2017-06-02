@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour {
@@ -6,6 +7,8 @@ public class EnemyBehavior : MonoBehaviour {
 	public GameObject station;
 
 	public GameObject missile;
+
+    public GameObject scoreText;
 
 	public float speed;
 
@@ -49,6 +52,9 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+
+        ScoreController.get().score += 10;
+        scoreText.GetComponent<Text>().text = "Score: " + ScoreController.get().score;
 		Object.Destroy (other.gameObject);
 		Object.Destroy (this.gameObject);
 	}
