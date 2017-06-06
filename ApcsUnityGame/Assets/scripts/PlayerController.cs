@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour {
 	// the offset to create the missiles
 	public Vector3 missileOffset;
 
+    public GameObject controller;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -31,24 +33,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		// Checks for rotating the player
-		if (Input.GetKey(KeyCode.LeftArrow)) {
-			transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
 
-		}else if (Input.GetKey (KeyCode.RightArrow)) {
-			transform.Rotate (0, 0, - turnSpeed * Time.deltaTime);
-		}
-
-		// checks for moving the player forwards/backwards
-		if (Input.GetKey (KeyCode.UpArrow)) {
-			transform.Translate (0, speed * Time.deltaTime, 0);
-
-		} else if (Input.GetKey(KeyCode.DownArrow)) {
-
-			// moves backwards at half speed
-			transform.Translate (0, - speed * Time.deltaTime / 2, 0);
-		}
+        transform.rotation = Quaternion.AngleAxis(-90 + 180 * controller.GetComponent<MovementController>().getAngle() / Mathf.PI, Vector3.forward);
+        transform.Translate(0, Time.deltaTime * speed * controller.GetComponent<MovementController>().getOffset(), 0);
 
 		// checks for shooting
 		if (Input.GetKeyDown (KeyCode.Space)) {
